@@ -34,8 +34,11 @@ svg{display:block}
   overflow:hidden;position:relative}
 @media(min-width:500px){
   #root{align-items:center;padding:22px}
-  .app{height:min(900px,calc(100vh - 44px));border-radius:44px;border:11px solid #0c0e11;
-    box-shadow:0 24px 70px rgba(0,0,0,.30)}
+  /* fixed phone aspect ratio (390:844); height is the limiting dimension,
+     bounded by both viewport height and width so it never overflows or distorts */
+  .app{width:auto;aspect-ratio:390 / 844;
+    height:min(880px, calc(100vh - 44px), calc((100vw - 44px) * 2.164));
+    border-radius:44px;border:11px solid #0c0e11;box-shadow:0 24px 70px rgba(0,0,0,.30)}
 }
 
 /* ---------------- NAV BAR (top) ---------------- */
