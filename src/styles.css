@@ -33,12 +33,13 @@ svg{display:block}
 .app{width:min(100%,440px);min-width:0;height:100vh;background:var(--grp);display:flex;flex-direction:column;
   overflow:hidden;position:relative}
 @media(min-width:500px){
-  #root{align-items:center;padding:22px}
-  /* fixed phone aspect ratio (390:844); height is the limiting dimension,
-     bounded by both viewport height and width so it never overflows or distorts */
-  .app{width:auto;aspect-ratio:390 / 844;
-    height:min(880px, calc(100vh - 44px), calc((100vw - 44px) * 2.164));
-    border-radius:44px;border:11px solid #0c0e11;box-shadow:0 24px 70px rgba(0,0,0,.30)}
+  /* Device mockup: app keeps a fixed logical size (390×844) so content never
+     reflows/cramps; the whole phone is scaled as one unit to fit the window
+     (scale set in JS). Aspect ratio is therefore always exact. */
+  #root{align-items:center;padding:0;overflow:hidden}
+  .app{width:390px;height:844px;
+    transform:scale(var(--scale,1));transform-origin:center center;
+    border-radius:46px;border:11px solid #0c0e11;box-shadow:0 24px 70px rgba(0,0,0,.30)}
 }
 
 /* ---------------- NAV BAR (top) ---------------- */
